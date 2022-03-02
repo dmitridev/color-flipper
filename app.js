@@ -14,7 +14,6 @@ let randomizeColor = function (e) {
 
     document.getElementById('color').style.setProperty('background', color);
     document.getElementById("color-flipper-color").innerHTML = `Цвет: ${color}`;
-    console.log(color);
 }
 
 randomizeColor();
@@ -25,7 +24,6 @@ function randomize() {
 
 document.getElementById("color-flipper-button").addEventListener('click', function (e) { randomizeColor(e) });
 document.getElementById("hex-color").addEventListener('click', function (e) {
-    console.log("here");
     this.style.color = '#777';
     document.getElementById("simple-color").style.color = "black";
     isHex = true;
@@ -39,7 +37,6 @@ document.getElementById("simple-color").addEventListener('click', function (e) {
     isHex = false;
     let color = `Цвет: rgb(${red},${green},${blue})`;
     document.getElementById("color-flipper-color").innerHTML = color;
-    console.log("hex-here");
 });
 
 
@@ -49,6 +46,6 @@ document.getElementById("color-flipper-copy").addEventListener("click", function
         color = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
     }
     navigator.clipboard.writeText(color).then(function(){
-        console.log('successfully copied');
+        
     })
 });
