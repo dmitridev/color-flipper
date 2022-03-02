@@ -1,5 +1,8 @@
-if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('/service-worker.js');
+if ('serviceWorker' in navigator) {
+
+    navigator.serviceWorker.register('/service-worker.js').then((o) => console.log('successfully installed service worker'))
+    .catch((o) => console.log('failed in register service worker'))
+
 }
 
 let isHex = true;
@@ -45,11 +48,11 @@ document.getElementById("simple-color").addEventListener('click', function (e) {
 
 
 document.getElementById("color-flipper-copy").addEventListener("click", function (e) {
-    let color=`rgb(${red},${green},${blue})`;
-    if(isHex){
+    let color = `rgb(${red},${green},${blue})`;
+    if (isHex) {
         color = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
     }
-    navigator.clipboard.writeText(color).then(function(){
-        
+    navigator.clipboard.writeText(color).then(function () {
+
     })
 });
