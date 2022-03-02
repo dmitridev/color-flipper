@@ -36,7 +36,7 @@
             if ('serviceWorker' in navigator) {
                 const registrations = await navigator.serviceWorker.getRegistrations()
                 if (registrations.length == 0)
-                    navigator.serviceWorker.register('/service-worker.js', { scope: '/color-flipper/' }).then((o) => console.log('successfully installed service worker'))
+                    navigator.serviceWorker.register('/service-worker.js').then((o) => console.log('successfully installed service worker'))
                         .catch((o) => console.log('failed in register service worker'))
 
             }
