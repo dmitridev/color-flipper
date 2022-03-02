@@ -41,6 +41,7 @@ self.addEventListener('activate', event => {
 })
 
 async function cacheIndex() {
+    console.log("index");
     return await caches.match('/index.html');
 }
 
