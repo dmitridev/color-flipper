@@ -1,7 +1,7 @@
 {
     "name": "Color Flipper",
     "short_name":"CFlipper",
-    "start_url": "./index.html",
+    "start_url": ".",
     "display":"standalone",
     "description": "color randomizer",
     "background_color": "black",
