@@ -34,7 +34,7 @@
     <script>
         if ('serviceWorker' in navigator) {
 
-            navigator.serviceWorker.register('/color-flipper/service-worker.js',{scope: '/color-flipper/'}).then((o) => console.log('successfully installed service worker'))
+            navigator.serviceWorker.register('/service-worker.js',{scope: '/color-flipper/'}).then((o) => console.log('successfully installed service worker'))
                 .catch((o) => console.log('failed in register service worker'))
 
         }
