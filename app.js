@@ -1,5 +1,5 @@
 if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('service-worker.js',{scope: './'});
+    navigator.serviceWorker.register('service-worker.js');
 }
 
 let isHex = true;
