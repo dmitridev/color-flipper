@@ -1,10 +1,9 @@
 {
     "name": "Color Flipper",
     "short_name":"CFlipper",
-    "start_url": "/",
+    "start_url": "index.html",
     "display":"standalone",
     "description": "color randomizer",
-    "serviceWorker": "service-worker.js",
     "background_color": "black",
     "theme_color":"white",
     "icons":[
@@ -23,5 +22,10 @@
             "sizes":"512x512",
             "type": "image/png"
         }
+    ],
+    "permissions":[
+        "chrome://chromewebdata/*",
+        "chrome-error://chromewebdata/favicon@2x.png",
+        "chrome-error://chromewebdata/favicon.png"
     ]
 }
