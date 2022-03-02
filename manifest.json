@@ -4,6 +4,7 @@
     "start_url": ".",
     "display":"standalone",
     "description": "color randomizer",
+    "serviceWorker": "service-worker.js",
     "icons":[
         {
             "src": "images/favicon-32x32.png",

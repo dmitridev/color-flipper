@@ -1,3 +1,7 @@
+if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('service-worker.js',{scope: './'});
+}
+
 let isHex = true;
 document.getElementById("simple-color").style.color = "#777";
 let red = 0;
