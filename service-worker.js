@@ -3,9 +3,9 @@ self.addEventListener('install', (event) =>
         caches.open('v2').then((cache) =>
             cache.addAll([
                 './images/',
-                'app.css',
-                'index.html',
-                'app.js'
+                './app.css',
+                './index.html',
+                './app.js'
             ])
         )
     )
