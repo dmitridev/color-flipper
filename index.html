@@ -9,6 +9,7 @@
     <link rel="stylesheet" charset="utf-8" href="app.css" async="">
     <link rel="icon" href="favicon.ico">
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+    <link rel="canonical" href="https://dmitridev.github.io/color-flipper/">
     <script src="service-worker.js" defer></script>
 </head>
 
@@ -30,6 +31,14 @@
     </section>
 
     <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+
+            navigator.serviceWorker.register('/color-flipper/service-worker.js',{scope: '/color-flipper/'}).then((o) => console.log('successfully installed service worker'))
+                .catch((o) => console.log('failed in register service worker'))
+
+        }
+    </script>
 </body>
 
 </html>

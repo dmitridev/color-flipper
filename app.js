@@ -1,9 +1,4 @@
-if ('serviceWorker' in navigator) {
 
-    navigator.serviceWorker.register('/service-worker.js').then((o) => console.log('successfully installed service worker'))
-    .catch((o) => console.log('failed in register service worker'))
-
-}
 
 let isHex = true;
 document.getElementById("simple-color").style.color = "#777";
