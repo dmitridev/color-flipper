@@ -24,7 +24,7 @@ self.addEventListener('fetch', async event => {
     const url = new URL(event.request.url)
 
     if (url.pathname === '/') {
-        event.respondWith(cacheIndex(event.request))
+        event.respondWith(cacheIndex())
         return;
     }
 
@@ -40,11 +40,8 @@ self.addEventListener('fetch', async event => {
 self.addEventListener('activate', event => {
 })
 
-async function cacheIndex(request) {
-    console.log('index');
-    const cache = await caches.open('v2')
-    const response = await caches.match('/index.html');
-    return response;
+async function cacheIndex() {
+    return await caches.match('/index.html');
 }
 
 async function cacheFirst(request) {
