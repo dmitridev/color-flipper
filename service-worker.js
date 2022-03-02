@@ -18,6 +18,8 @@ self.addEventListener('install', (event) => {
 );
 
 self.addEventListener('fetch', event => {
+
+    console.log('fetch', event.request.url)
     const url = new URL(event.request.url);
 
     if (url.origin === location.origin) {
