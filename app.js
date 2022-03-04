@@ -6,6 +6,7 @@ let hexColor = document.getElementById("hex-color");
 let simpleColor = document.getElementById("simple-color");
 let colorH1 = document.getElementById("color-flipper-color");
 let colorBlock = document.getElementById("color");
+let copyButton = document.getElementById("color-flipper-copy")
 const accentColor = "black";
 const nonAccentColor = '#777';
 
@@ -60,11 +61,18 @@ simpleColor.onclick = function (e) {
     setKey('isHex', false);
 }
 
-document.getElementById("color-flipper-copy").addEventListener("click", function (e) {
+copyButton.addEventListener("click", async function (e) {
     let color = toRGB(red, green, blue);
 
     if (getKey('isHex') === "true")
         color = toHex(red, green, blue);
 
-    navigator.clipboard.writeText(color);
+    try {
+        await navigator.clipboard.writeText(color);
+        copyButton.innerHTML = "Скопировано";
+    } catch (e) {
+        copyButton.innerHTML = "Ошибка копирования";
+
+    }
+    setInterval(() => copyButton.innerHTML = "Скопировать", 2000);
 });
