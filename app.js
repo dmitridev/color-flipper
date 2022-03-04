@@ -68,11 +68,22 @@ copyButton.addEventListener("click", async function (e) {
         color = toHex(red, green, blue);
 
     try {
-        await navigator.clipboard.writeText(color);
+        // for ios devices
+        let textArea = document.createElement('textarea');
+        textArea.setAttribute('readonly', true);
+        textArea.setAttribute('contenteditable', true);
+        textArea.focus();
+        textArea.select();
+        const range = document.createRange();
+        range.selectNodeContents(textArea);
+        textArea.value = color;
+        textArea.setSelectionRange(0, textArea.value.length);
+        document.execCommand('copy');
+
+        //await navigator.clipboard.writeText(color);
         copyButton.innerHTML = "Скопировано";
     } catch (e) {
         copyButton.innerHTML = "Ошибка копирования";
-
     }
     setInterval(() => copyButton.innerHTML = "Скопировать", 2000);
 });
