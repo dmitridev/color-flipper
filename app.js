@@ -71,16 +71,19 @@ copyButton.addEventListener("click", async function (e) {
         // for ios devices
         let textArea = document.createElement('textarea');
         textArea.setAttribute('readonly', true);
+        textArea.setAttribute('id', "hidden-text-area-for-ios");
         textArea.setAttribute('contenteditable', true);
+
+        document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
         const range = document.createRange();
         range.selectNodeContents(textArea);
-        textArea.value = color;
-        textArea.setSelectionRange(0, textArea.value.length);
-        document.execCommand('copy');
-
-        //await navigator.clipboard.writeText(color);
+        textArea.textContent = color;
+        console.log(textArea.textContent);
+        textArea.setSelectionRange(0, textArea.textContent.length);
+        let result = document.execCommand('copy');
+        document.body.removeChild(textArea);
         copyButton.innerHTML = "Скопировано";
     } catch (e) {
         copyButton.innerHTML = "Ошибка копирования";
