@@ -10,12 +10,13 @@
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     outline: none;
+    transition: all .5s;
 }
 
 body {
     width: 100vw;
     height: 100vh;
-    background:#eee;
+    background: #eee;
 }
 
 a, a:active, a:hover {
@@ -27,12 +28,12 @@ nav {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
+    justify-content: space-around;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     padding: 10px;
     -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .4);
-            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .4);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .4);
     background: white;
     border-bottom: 3px solid black;
 }
@@ -41,7 +42,11 @@ nav a {
     font-size: 20px;
     color: black;
     font-weight: 800;
-    cursor:pointer;
+    cursor: pointer;
+}
+
+.switcher{
+    color: #777;
 }
 
 section {
@@ -49,16 +54,16 @@ section {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    height:90vh;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 90vh;
 }
 
 button {
@@ -68,7 +73,17 @@ button {
     padding: 10px;
     font-weight: 800;
     font-size: 20px;
-    margin:10px;
+    margin: 10px;
+
+    -webkit-box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, .5);
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, .4);
+}
+
+button:active {
+    position:relative;
+    top:2px;
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, .4);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, .4);
 }
 
 h1 {
@@ -79,12 +94,12 @@ h1 {
     font-weight: 800;
     font-size: 20px;
     text-align: center;
-    width: 250px;
-    margin:10px;
+    width: 300px;
+    margin: 10px;
 }
 
-#color{
-    width:20vw;
-    height:20vw;
-    border:3px solid black;
+#color {
+    width: 20vw;
+    height: 20vw;
+    border: 3px solid black;
 }
