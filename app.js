@@ -4,8 +4,16 @@ let blue = 0;
 let colorFlipperButton = document.getElementById("color-flipper-button");
 let hexColor = document.getElementById("hex-color");
 let simpleColor = document.getElementById("simple-color");
+let colorH1 = document.getElementById("color-flipper-color");
+let colorBlock = document.getElementById("color");
 const accentColor = "black";
 const nonAccentColor = '#777';
+
+//helpers
+let getKey = (key = 'isHex') => localStorage.getItem(key);
+let setKey = (key = 'isHex', value = true) => localStorage.setItem(key, value);
+let toHex = (r = 0, g = 0, b = 0) => `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`
+let toRGB = (r = 0, g = 0, b = 0) => `rgb(${r},${g},${b})`
 
 let randomizeColor = function () {
     function randomize() {
@@ -15,62 +23,48 @@ let randomizeColor = function () {
     red = randomize();
     green = randomize();
     blue = randomize();
-    let color = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+    let color = toRGB(red, green, blue);
 
-    if (isHex)
-        color = `rgb(${red},${green},${blue})`;
+    if (getKey('isHex') === "true")
+        color = toHex(red, green, blue);
 
-    document.getElementById('color').style.setProperty('background', color);
-    document.getElementById("color-flipper-color").innerHTML = `Цвет: ${color}`;
+    colorBlock.style.setProperty('background', color);
+    colorH1.innerHTML = `Цвет: ${color}`;
 }
 
 let saveToLocalStorage = function (key = 'isHex', value = true) {
     localStorage.setItem(key, value.toString());
 }
 
-
-
-
 // code goes here
+if (!getKey('isHex'))
+    localStorage.setItem("isHex", true);
 
-if (!localStorage.getItem("isHex"))
-    localStorage.setItem("isHex", 'true');
-
-
-let isHex = localStorage.getItem('isHex') === "true";
-const str = isHex ? "hex-color" : "simple-color";
+const str = getKey('isHex') == "true" ? "hex-color" : "simple-color";
 document.getElementById(str).style.color = accentColor;
-
-
 
 randomizeColor();
 colorFlipperButton.addEventListener('click', randomizeColor);
 
 hexColor.onclick = function (e) {
     this.style.color = accentColor;
-    document.getElementById("simple-color").style.color = nonAccentColor;
-    isHex = true;
-    saveToLocalStorage();
-    let color = `Цвет: #${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
-    document.getElementById("color-flipper-color").innerHTML = color;
+    simpleColor.style.color = nonAccentColor;
+    colorH1.innerHTML = `Цвет: ${toHex(red, green, blue)}`;
+    setKey('isHex', true);
 }
 
 simpleColor.onclick = function (e) {
     this.style.color = accentColor;
-    document.getElementById("hex-color").style.color = nonAccentColor;
-    isHex = false;
-    saveToLocalStorage('isHex', false);
-    let color = `Цвет: rgb(${red},${green},${blue})`;
-    document.getElementById("color-flipper-color").innerHTML = color;
+    hexColor.style.color = nonAccentColor;
+    colorH1.innerHTML = `Цвет: ${toRGB(red, green, blue)}`;
+    setKey('isHex', false);
 }
 
 document.getElementById("color-flipper-copy").addEventListener("click", function (e) {
-    let color = `rgb(${red},${green},${blue})`;
+    let color = toRGB(red, green, blue);
 
-    if (isHex)
-        color = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+    if (getKey('isHex') === "true")
+        color = toHex(red, green, blue);
 
-    navigator.clipboard.writeText(color).then(function () {
-
-    })
+    navigator.clipboard.writeText(color);
 });
